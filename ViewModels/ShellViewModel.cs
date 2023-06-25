@@ -9,5 +9,5 @@ namespace CryptocurrencyWPFApp.ViewModels
 	public class ShellViewModel
 	{
 
-	}
+    }
 }

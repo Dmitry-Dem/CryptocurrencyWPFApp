@@ -23,5 +23,5 @@ namespace CryptocurrencyWPFApp.Views
 		{
 			InitializeComponent();
 		}
-	}
+    }
 }
