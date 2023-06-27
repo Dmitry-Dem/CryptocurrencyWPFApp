@@ -14,7 +14,6 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 	{
 		private CoinGeckoAPIImitation _APIImitation = new CoinGeckoAPIImitation();
 		private BindableCollection<Ticker> tickers;
-
 		public BindableCollection<Ticker> Tickers
 		{
 			get { return tickers; }

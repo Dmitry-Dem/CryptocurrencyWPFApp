@@ -3,15 +3,34 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CryptocurrencyWPFApp.MVVM.Views"
+      xmlns:local="clr-namespace:CryptocurrencyWPFApp.MVVM.ViewModels"
       mc:Ignorable="d" 
       Width="1080" Height="720">
 
+    <Page.DataContext>
+        <local:CoinsViewModel/>
+    </Page.DataContext>
+
     <Border Background="{StaticResource LightThemeMainBackgroundBrush}">
+
+        <!--Page Content-->
         <Grid>
-            <TextBlock Text="CoinsPage"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"/>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--List Title-->
+            <Grid Grid.Row="0">
+                <TextBlock
+                    Text="Coins"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+            </Grid>
+
+            <!--List: Currencies-->
+            <DataGrid Grid.Row="1" ItemsSource="{Binding Currencies}"/>
         </Grid>
     </Border>
 </Page>
