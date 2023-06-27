@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using CryptocurrencyWPFApp.MVVM.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CryptocurrencyWPFApp.Models.APIs
+namespace CryptocurrencyWPFApp.MVVM.Models.APIs
 {
 	public class CoinGeckoAPI
 	{

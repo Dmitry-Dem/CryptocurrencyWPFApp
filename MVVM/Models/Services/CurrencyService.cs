@@ -1,12 +1,12 @@
-﻿using CryptocurrencyWPFApp.Models.APIs;
-using CryptocurrencyWPFApp.Models.Interfaces;
+﻿using CryptocurrencyWPFApp.MVVM.Models.APIs;
+using CryptocurrencyWPFApp.MVVM.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CryptocurrencyWPFApp.Models.Services
+namespace CryptocurrencyWPFApp.MVVM.Models.Services
 {
 	public class CurrencyService : ICurrencyService
 	{

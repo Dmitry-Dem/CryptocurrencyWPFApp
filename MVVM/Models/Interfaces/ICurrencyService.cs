@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using CryptocurrencyWPFApp.MVVM.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CryptocurrencyWPFApp.Models.Interfaces
+namespace CryptocurrencyWPFApp.MVVM.Models.Interfaces
 {
 	public interface ICurrencyService
 	{

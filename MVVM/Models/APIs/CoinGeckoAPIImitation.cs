@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace CryptocurrencyWPFApp.Models.APIs
+namespace CryptocurrencyWPFApp.MVVM.Models.APIs
 {
 	public class CoinGeckoAPIImitation
 	{

@@ -10,18 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CryptocurrencyWPFApp.Views
+namespace CryptocurrencyWPFApp.MVVM.Views
 {
 	/// <summary>
-	/// Interaction logic for ShellView.xaml
+	/// Interaction logic for CoinsView.xaml
 	/// </summary>
-	public partial class ShellView : Window
+	public partial class CoinsView : Page
 	{
-		public ShellView()
+		public CoinsView()
 		{
 			InitializeComponent();
 		}
-    }
+	}
 }

@@ -1,0 +1,36 @@
+﻿<Page x:Class="CryptocurrencyWPFApp.MVVM.Views.TopCurrenciesView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CryptocurrencyWPFApp.MVVM.ViewModels"
+      mc:Ignorable="d" 
+      Width="1080" Height="720">
+
+    <Page.DataContext>
+        <local:TopCurrenciesViewModel/>
+    </Page.DataContext>
+    
+    <Border Background="{StaticResource LightThemeMainBackgroundBrush}">
+        
+        <!--Page Content-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--List Title-->
+            <Grid Grid.Row="0">
+                <TextBlock
+                    Text="Top 100 Currencies"
+                    FontSize="30"
+                    FontWeight="Bold"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+            </Grid>
+
+            <!--List: Top Currencies-->
+            <DataGrid Grid.Row="1" ItemsSource="{Binding TopCurrencies}"/>
+        </Grid>
+    </Border>
+</Page>

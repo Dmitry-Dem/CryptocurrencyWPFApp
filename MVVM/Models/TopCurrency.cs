@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CryptocurrencyWPFApp.Models
+namespace CryptocurrencyWPFApp.MVVM.Models
 {
 	public class TopCurrency : Currency
 	{
@@ -16,5 +16,9 @@ namespace CryptocurrencyWPFApp.Models
 
 		[JsonProperty("current_price")]
 		public decimal Price { get; set; }
-	}
+		[JsonProperty("total_volume")]
+		public decimal TotalVolume { get; set; }
+		[JsonProperty("total_supply")]
+		public decimal TotalSupply { get; set; }
+    }
 }

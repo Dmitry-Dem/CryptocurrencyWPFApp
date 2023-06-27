@@ -1,5 +1,5 @@
 ﻿using Caliburn.Micro;
-using CryptocurrencyWPFApp.ViewModels;
+using CryptocurrencyWPFApp.MVVM.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace CryptocurrencyWPFApp
         }
 		protected override void OnStartup(object sender, StartupEventArgs e)
 		{
-			DisplayRootViewForAsync<ShellViewModel>();
+			DisplayRootViewForAsync<MainViewModel>();
 		}
 	}
 }

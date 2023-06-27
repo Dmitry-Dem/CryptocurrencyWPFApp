@@ -81,26 +81,51 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Models\APIs\CoinGeckoAPIImitation.cs" />
-    <Compile Include="Models\APIs\CoinGeckoAPI.cs" />
-    <Compile Include="Models\Currency.cs" />
-    <Compile Include="Models\Services\CurrencyService.cs" />
-    <Compile Include="Models\Interfaces\ICurrencyService.cs" />
-    <Compile Include="Models\TopCurrency.cs" />
-    <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="Views\ShellView.xaml.cs">
-      <DependentUpon>ShellView.xaml</DependentUpon>
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="MVVM\Models\APIs\CoinGeckoAPIImitation.cs" />
+    <Compile Include="MVVM\Models\APIs\CoinGeckoAPI.cs" />
+    <Compile Include="MVVM\Models\Currency.cs" />
+    <Compile Include="MVVM\Models\Services\CurrencyService.cs" />
+    <Compile Include="MVVM\Models\Interfaces\ICurrencyService.cs" />
+    <Compile Include="MVVM\Models\TopCurrency.cs" />
+    <Compile Include="MVVM\ViewModels\CoinsViewMode.cs" />
+    <Compile Include="MVVM\ViewModels\ConverterViewModel.cs" />
+    <Compile Include="MVVM\ViewModels\MainViewModel.cs" />
+    <Compile Include="MVVM\ViewModels\TopCurrenciesViewModel.cs" />
+    <Compile Include="MVVM\Views\CoinsView.xaml.cs">
+      <DependentUpon>CoinsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\ConverterView.xaml.cs">
+      <DependentUpon>ConverterView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\ShellView.xaml">
+    <Page Include="MVVM\Views\CoinsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\ConverterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MVVM\Views\TopCurrenciesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVVM\Views\TopCurrenciesView.xaml.cs">
+      <DependentUpon>TopCurrenciesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -127,6 +152,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\search_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\darck_theme.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

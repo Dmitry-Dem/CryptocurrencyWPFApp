@@ -1,0 +1,17 @@
+﻿<Page x:Class="CryptocurrencyWPFApp.MVVM.Views.CoinsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CryptocurrencyWPFApp.MVVM.Views"
+      mc:Ignorable="d" 
+      Width="1080" Height="720">
+
+    <Border Background="{StaticResource LightThemeMainBackgroundBrush}">
+        <Grid>
+            <TextBlock Text="CoinsPage"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+        </Grid>
+    </Border>
+</Page>
