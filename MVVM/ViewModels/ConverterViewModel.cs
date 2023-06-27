@@ -9,5 +9,6 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 {
 	public class ConverterViewModel : Screen
 	{
+
 	}
 }
