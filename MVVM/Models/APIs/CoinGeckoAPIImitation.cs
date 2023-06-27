@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using CryptocurrencyWPFApp.MVVM.Views;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -301,6 +303,37 @@ namespace CryptocurrencyWPFApp.MVVM.Models.APIs
 			catch (Exception)
 			{
 
+				throw;
+			}
+		}
+        public List<Ticker> GetTickersByCurrencieId(string id)
+        {
+            string jsonResponse = "{\"name\":\"Bitcoin\",\"tickers\":[{\"base\":\"BTC\",\"target\":\"USDT\",\"market\":{\"name\":\"Binance\",\"identifier\":\"binance\",\"has_trading_incentive\":false},\"last\":30619.57,\"volume\":44282.944018793685,\"converted_last\":{\"btc\":1.000203,\"eth\":16.343658,\"usd\":30607},\"converted_volume\":{\"btc\":44292,\"eth\":723745,\"usd\":1355351463},\"trust_score\":\"green\",\"bid_ask_spread_percentage\":0.010033,\"timestamp\":\"2023-06-27T15:36:01+00:00\",\"last_traded_at\":\"2023-06-27T15:36:01+00:00\",\"last_fetch_at\":\"2023-06-27T15:36:01+00:00\",\"is_anomaly\":false,\"is_stale\":false,\"trade_url\":\"https://www.binance.com/en/trade/BTC_USDT?ref=37754157\",\"token_info_url\":null,\"coin_id\":\"bitcoin\",\"target_coin_id\":\"tether\"},{\"base\":\"BTC\",\"target\":\"USDT\",\"market\":{\"name\":\"BTCEX\",\"identifier\":\"btcex\",\"has_trading_incentive\":false},\"last\":30538.064,\"volume\":10072.4195,\"converted_last\":{\"btc\":1.000317,\"eth\":16.326153,\"usd\":30597},\"converted_volume\":{\"btc\":10040,\"eth\":163862,\"usd\":307091499},\"trust_score\":\"green\",\"bid_ask_spread_percentage\":0.010193,\"timestamp\":\"2023-06-27T15:49:09+00:00\",\"last_traded_at\":\"2023-06-27T15:49:09+00:00\",\"last_fetch_at\":\"2023-06-27T15:49:09+00:00\",\"is_anomaly\":false,\"is_stale\":false,\"trade_url\":\"https://www.btcex.com/spot?target=BTC-USDT\",\"token_info_url\":null,\"coin_id\":\"bitcoin\",\"target_coin_id\":\"tether\"}]}";
+
+			try
+			{
+				JObject jsonObject = JObject.Parse(jsonResponse);
+
+				var jsonArray = (JArray)jsonObject["tickers"];
+
+                var tickers = new List<Ticker>();
+
+				foreach (var jsonObj in jsonArray)
+				{
+                    tickers.Add(new Ticker()
+                    {
+                        Base = (string)jsonObj["base"],
+                        Target = (string)jsonObj["target"],
+                        MarketName = (string)jsonObj["market"]["name"],
+                        TradeUrl = (string)jsonObj["trade_url"],
+                        PriceInUSD = (string)jsonObj["converted_last"]["usd"]
+					});
+				}
+
+				return tickers;
+			}
+			catch (Exception)
+			{
 				throw;
 			}
 		}

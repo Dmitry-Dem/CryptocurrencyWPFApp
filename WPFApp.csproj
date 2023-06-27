@@ -85,13 +85,18 @@
     <Compile Include="MVVM\Models\APIs\CoinGeckoAPIImitation.cs" />
     <Compile Include="MVVM\Models\APIs\CoinGeckoAPI.cs" />
     <Compile Include="MVVM\Models\Currency.cs" />
+    <Compile Include="MVVM\Models\CurrencyDetails.cs" />
     <Compile Include="MVVM\Models\Services\CurrencyService.cs" />
     <Compile Include="MVVM\Models\Interfaces\ICurrencyService.cs" />
     <Compile Include="MVVM\Models\TopCurrency.cs" />
+    <Compile Include="MVVM\ViewModels\CoinDetailsViewModel.cs" />
     <Compile Include="MVVM\ViewModels\CoinsViewMode.cs" />
     <Compile Include="MVVM\ViewModels\ConverterViewModel.cs" />
     <Compile Include="MVVM\ViewModels\MainViewModel.cs" />
     <Compile Include="MVVM\ViewModels\TopCurrenciesViewModel.cs" />
+    <Compile Include="MVVM\Views\CoinDetailsView.xaml.cs">
+      <DependentUpon>CoinDetailsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MVVM\Views\CoinsView.xaml.cs">
       <DependentUpon>CoinsView.xaml</DependentUpon>
     </Compile>
@@ -105,6 +110,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MVVM\Views\CoinDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MVVM\Views\CoinsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,6 +132,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MVVM\Models\Ticker.cs" />
     <Compile Include="MVVM\Views\TopCurrenciesView.xaml.cs">
       <DependentUpon>TopCurrenciesView.xaml</DependentUpon>
     </Compile>
