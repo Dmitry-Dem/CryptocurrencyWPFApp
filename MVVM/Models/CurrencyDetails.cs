@@ -14,5 +14,8 @@ namespace CryptocurrencyWPFApp.MVVM.Models
 
 		[JsonProperty("circulating_supply")]
 		public decimal CirculatingSupply { get; set; }
+
+		[JsonProperty("market_cap")]
+		public decimal MarketCap { get; set; }
 	}
 }

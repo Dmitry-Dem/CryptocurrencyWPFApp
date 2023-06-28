@@ -7,25 +7,30 @@ using System.Windows.Input;
 
 namespace CryptocurrencyWPFApp.Commands
 {
-	public class RelayCommand : ICommand
+	public class RelayCommand<T> : ICommand
 	{
-		private readonly Action<object> execute;
-		private readonly Func<bool> canExecute;
-
-		public RelayCommand(Action<object> execute, Func<bool> canExecute = null)
+		private readonly Action<T> _execute;
+		private readonly Func<T, bool> _canExecute;
+		public RelayCommand(Action<T> execute, Func<T, bool> canExecute = null)
 		{
-			this.execute = execute;
-			this.canExecute = canExecute;
+			_execute = execute;
+			_canExecute = canExecute;
 		}
-
 		public bool CanExecute(object parameter)
 		{
-			return canExecute == null || canExecute();
-		}
+			if (parameter is T castParameter)
+			{
+				return _canExecute == null || _canExecute(castParameter);
+			}
 
+			return false;
+		}
 		public void Execute(object parameter)
 		{
-			execute(parameter);
+			if (parameter is T castParameter)
+			{
+				_execute(castParameter);
+			}
 		}
 
 		public event EventHandler CanExecuteChanged

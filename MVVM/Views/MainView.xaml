@@ -5,10 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptocurrencyWPFApp.MVVM.Views"
         mc:Ignorable="d"
-        Width="1080" Height="720"
-        Background="Transparent"
-        AllowsTransparency="True"
-        WindowStyle="None">
+        Width="1080" Height="720">
 
     <Border
         CornerRadius="25" 
@@ -17,7 +14,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
 
             <!--Navigation menu-->
@@ -142,10 +139,12 @@
 
             <!--Page Content-->
             <Grid Grid.Row="1">
-                <Frame 
-                    Name="mainFrame" 
-                    Source="{Binding PagePath}" 
-                    NavigationUIVisibility="Hidden"/>
+                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                    <Frame 
+                        Name="mainFrame" 
+                        Source="{Binding PagePath}" 
+                        NavigationUIVisibility="Hidden"/>
+                </ScrollViewer>
             </Grid>
         </Grid>
     </Border>

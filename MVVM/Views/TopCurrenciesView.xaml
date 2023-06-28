@@ -2,7 +2,7 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:CryptocurrencyWPFApp.MVVM.ViewModels"
       mc:Ignorable="d" 
       Width="1080" Height="720">
@@ -14,23 +14,65 @@
     <Border Background="{StaticResource LightThemeMainBackgroundBrush}">
         
         <!--Page Content-->
-        <Grid>
+        <Grid Margin="20, 20, 20, 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <!--List Title-->
-            <Grid Grid.Row="0">
-                <TextBlock
-                    Text="Top 100 Currencies"
-                    FontSize="30"
-                    FontWeight="Bold"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-            </Grid>
+
+            <TextBlock
+                Grid.Row="0"
+                Text="Top 100 Currencies"
+                FontSize="20"
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Margin="0, 0, 0, 20"/>
 
             <!--List: Top Currencies-->
-            <DataGrid Grid.Row="1" ItemsSource="{Binding TopCurrencies}"/>
+            <DataGrid 
+                Grid.Row="1" 
+                ItemsSource="{Binding TopCurrencies}"
+                AlternatingRowBackground="Gainsboro"
+                CanUserAddRows="False"
+                AutoGenerateColumns="False">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Rank" Binding="{Binding Path=Rank}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Header="Image" Width="50">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Width="30" Source="{Binding Path=Image}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Symbol" Binding="{Binding Path=Symbol}" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Price ($)" Binding="{Binding Path=Price}" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Total Volume ($)" Binding="{Binding Path=TotalVolume}" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Total Supply ($)" Binding="{Binding Path=TotalSupply}" Width="*" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Header="Details" Width="50">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Background="{StaticResource LightThemeBackgroundBrush}"
+                                    CornerRadius="5"
+                                    Margin="2">
+                                    
+                                    <Button
+                                        Content="Open"
+                                        Background="Transparent"
+                                        Foreground="{StaticResource LightThemeForegroundBrush}"
+                                        BorderBrush="Transparent"
+                                        Command="{Binding DataContext.OpenCurrencyDetailsPageByIdCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding Id}"/>
+                                </Border>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Border>
 </Page>

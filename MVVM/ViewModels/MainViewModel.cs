@@ -31,12 +31,10 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 		}
         public MainViewModel()
         {
-			OpenPageCommand = new RelayCommand(OpenPage);
+			OpenPageCommand = new RelayCommand<string>(OpenPage);
 		}
-		private void OpenPage(object parameter)
+		private void OpenPage(string pageName)
 		{
-			string pageName = parameter as string;
-
 			PagePath = GetPagePathByPageName(pageName);
 		}
 		private static string GetPagePathByPageName(string pageName)

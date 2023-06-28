@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
+using CryptocurrencyWPFApp.Commands;
+using System.Windows.Controls;
+using System.Windows;
+using CryptocurrencyWPFApp.MVVM.Views;
 
 namespace CryptocurrencyWPFApp.MVVM.ViewModels
 {
@@ -24,6 +29,26 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 		public TopCurrenciesViewModel()
         {
 			TopCurrencies = new BindableCollection<TopCurrency>(aPIImitation.GetTopNCurrenciesAsync(100));
+
+			openCurrencyDetailsPageByIdCommand = new RelayCommand<string>(OpenCurrencyDetailsPageById);
+		}
+
+		private ICommand openCurrencyDetailsPageByIdCommand;
+		public ICommand OpenCurrencyDetailsPageByIdCommand
+		{
+			get { return openCurrencyDetailsPageByIdCommand; }
+			set { openCurrencyDetailsPageByIdCommand = value; }
+		}
+		public void OpenCurrencyDetailsPageById(string Id)
+		{
+			Frame frame = (Frame)Application.Current.MainWindow.FindName("mainFrame");
+
+			if (frame != null)
+			{
+				Application.Current.Properties["CoinDetailsId"] = Id;
+
+				frame.Navigate(new CoinDetailsView());
+			}
 		}
 	}
 }

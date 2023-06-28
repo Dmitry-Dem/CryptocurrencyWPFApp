@@ -14,21 +14,23 @@
     <Border Background="{StaticResource LightThemeMainBackgroundBrush}">
 
         <!--Page Content-->
-        <Grid>
+        <Grid
+            Margin="20, 20, 20, 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <!--List Title-->
-            <Grid Grid.Row="0">
-                <TextBlock
-                    Text="Coins"
-                    FontSize="30"
-                    FontWeight="Bold"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-            </Grid>
-
+            
+            <TextBlock
+                Grid.Row="0"
+                Text="Coins"
+                FontSize="20"
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Margin="0, 0, 0, 20"/>
+            
             <!--List: Currencies-->
             <DataGrid Grid.Row="1" ItemsSource="{Binding Currencies}"/>
         </Grid>

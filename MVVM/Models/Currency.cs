@@ -22,5 +22,9 @@ namespace CryptocurrencyWPFApp.MVVM.Models
 
 		[JsonProperty("current_price")]
 		public decimal Price { get; set; }
+		public override string ToString()
+		{
+			return Symbol.ToUpper();
+		}
 	}
 }

@@ -48,6 +48,12 @@
     <Reference Include="Caliburn.Micro.Platform.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <HintPath>packages\Caliburn.Micro.4.0.212\lib\net462\Caliburn.Micro.Platform.Core.dll</HintPath>
     </Reference>
+    <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
+      <HintPath>packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -84,6 +90,7 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="MVVM\Models\APIs\CoinGeckoAPIImitation.cs" />
     <Compile Include="MVVM\Models\APIs\CoinGeckoAPI.cs" />
+    <Compile Include="MVVM\Models\CoinPriceChartData.cs" />
     <Compile Include="MVVM\Models\Currency.cs" />
     <Compile Include="MVVM\Models\CurrencyDetails.cs" />
     <Compile Include="MVVM\Models\Services\CurrencyService.cs" />
@@ -167,6 +174,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\darck_theme.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\exchange_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
