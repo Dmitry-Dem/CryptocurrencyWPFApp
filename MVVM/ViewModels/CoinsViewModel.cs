@@ -1,11 +1,15 @@
 ﻿using Caliburn.Micro;
+using CryptocurrencyWPFApp.Commands;
 using CryptocurrencyWPFApp.MVVM.Models;
 using CryptocurrencyWPFApp.MVVM.Models.APIs;
+using CryptocurrencyWPFApp.MVVM.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace CryptocurrencyWPFApp.MVVM.ViewModels
@@ -20,9 +24,29 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 			get { return _currencies; }
 			set { _currencies = value; NotifyOfPropertyChange(() => Currencies); }
 		}
-        public CoinsViewModel()
+
+		private ICommand openCurrencyDetailsPageByIdCommand;
+		public ICommand OpenCurrencyDetailsPageByIdCommand
+		{
+			get { return openCurrencyDetailsPageByIdCommand; }
+			set { openCurrencyDetailsPageByIdCommand = value; }
+		}
+		public CoinsViewModel()
         {
 			Currencies = new BindableCollection<Currency>(_APIImitation.GetAllCurrenciesAsync());
-        }
-    }
+
+			openCurrencyDetailsPageByIdCommand = new RelayCommand<string>(OpenCurrencyDetailsPageById);
+		}
+		public void OpenCurrencyDetailsPageById(string Id)
+		{
+			Frame frame = (Frame)Application.Current.MainWindow.FindName("mainFrame");
+
+			if (frame != null)
+			{
+				Application.Current.Properties["CoinDetailsId"] = Id;
+
+				frame.Navigate(new CoinDetailsView());
+			}
+		}
+	}
 }

@@ -32,7 +32,46 @@
                 Margin="0, 0, 0, 20"/>
             
             <!--List: Currencies-->
-            <DataGrid Grid.Row="1" ItemsSource="{Binding Currencies}"/>
+            <DataGrid 
+                Grid.Row="1" 
+                ItemsSource="{Binding Currencies}"
+                CanUserAddRows="False"
+                AutoGenerateColumns="False"
+                AlternatingRowBackground="Gainsboro">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Rank" Binding="{Binding Rank}" Width="auto" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Header="Image" Width="50">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Width="30" Source="{Binding Path=Image}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Price ($)" Binding="{Binding Price}" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Symbol" Binding="{Binding Symbol}" Width="*" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Header="Details" Width="50">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Background="{StaticResource LightThemeBackgroundBrush}"
+                                    CornerRadius="5"
+                                    Margin="2">
+
+                                    <Button
+                                        Content="Open"
+                                        Background="Transparent"
+                                        Foreground="{StaticResource LightThemeForegroundBrush}"
+                                        BorderBrush="Transparent"
+                                        Command="{Binding DataContext.OpenCurrencyDetailsPageByIdCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
+                                        CommandParameter="{Binding Id}"/>
+                                </Border>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Border>
 </Page>
