@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:CryptocurrencyWPFApp.MVVM.ViewModels"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Width="1080" Height="720">
+        Width="1080" Height="720"
+        Title="Cryptocurrency App">
 
     <Window.Resources>
         <sys:Boolean x:Key="TrueValue">True</sys:Boolean>
@@ -20,7 +21,7 @@
     
     <Border
         CornerRadius="25" 
-        Background="{StaticResource LightThemeMainBackgroundBrush}">
+        Background="{DynamicResource Background_Main}">
 
         <Grid>
             <Grid.RowDefinitions>
@@ -31,8 +32,8 @@
             <!--Navigation menu-->
             <Border 
                 Grid.Row="0" 
-                CornerRadius="0" 
-                Background="{StaticResource LightThemeBackgroundBrush}" Grid.ColumnSpan="2">
+                CornerRadius="0"
+                Background="{DynamicResource Background_0}" Grid.ColumnSpan="2">
 
                 <Grid
                     Margin="20, 0, 0, 0">
@@ -45,9 +46,9 @@
                     <DockPanel LastChildFill="False">
                         <Button
                             Content="Top Currencies"
-                            Height="55"
+                            Height="60"
                             FontSize="25"
-                            Style="{StaticResource CustomButtonStyle}"
+                            Style="{DynamicResource CustomButtonStyle}"
                             Command="{Binding OpenPageCommand}" CommandParameter="TopCurrencies"/>
 
                         <Button
@@ -76,7 +77,7 @@
                             x:Name="toggleButton" 
                             Content="en"
                             FontSize="20"
-                            Foreground="{StaticResource LightThemeForegroundBrush}"
+                            Foreground="{DynamicResource Text_0}"
                             Style="{StaticResource CustomToggleButtonStyle}"/>
 
                         <Popup 
@@ -85,7 +86,7 @@
                             StaysOpen="False">
 
                             <Border 
-                                Background="{StaticResource LightThemeBackgroundBrush}" 
+                                Background="{DynamicResource Background_0}" 
                                 BorderBrush="Transparent">
 
                                 <StackPanel 
@@ -94,17 +95,17 @@
                                     <TextBlock 
                                         Text="ua" 
                                         TextAlignment="Center" 
-                                        Foreground="{StaticResource LightThemeForegroundBrush}"/>
+                                        Foreground="{DynamicResource Text_0}"/>
 
                                     <TextBlock
                                         Text="en" 
                                         TextAlignment="Center" 
-                                        Foreground="{StaticResource LightThemeForegroundBrush}"/>
+                                        Foreground="{DynamicResource Text_0}"/>
 
                                     <TextBlock 
                                         Text="ro"
                                         TextAlignment="Center" 
-                                        Foreground="{StaticResource LightThemeForegroundBrush}"/>
+                                        Foreground="{DynamicResource Text_0}"/>
 
                                 </StackPanel>
                             </Border>
@@ -113,12 +114,13 @@
                         <!--Change Light/Darck Theme-->
                         <Button
                             Grid.Column="1"
-                            Background="Transparent"
-                            BorderBrush="Transparent">
+                            Command="{Binding ChangeThemeCommand}"
+                            Style="{DynamicResource CustomButtonStyle}">
+                            
                             <Button.Template>
                                 <ControlTemplate TargetType="Button">
                                     <Grid>
-                                        <Image Width="25" Source="\Resources\Images\darck_theme.png"/>
+                                        <Image Width="25" Source="{Binding DataContext.ImagePath, RelativeSource={RelativeSource AncestorType=Grid}}"/>
                                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                                     </Grid>
                                 </ControlTemplate>
@@ -131,10 +133,6 @@
                             Grid.Column="2"
                             Margin="0, 0, 10, 0"
                             Height="60">
-
-                            <!--<Grid.InputBindings>
-                                <KeyBinding Key="Enter" Command="{Binding SearchCurrencyDetailsPageCommand}" CommandParameter="{Binding SelectedCurrency}"/>
-                            </Grid.InputBindings>-->
 
                             <ComboBox
                                 x:Name="textBox"

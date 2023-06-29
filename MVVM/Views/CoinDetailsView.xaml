@@ -11,8 +11,8 @@
     <Page.DataContext>
         <local:CoinDetailsViewModel/>
     </Page.DataContext>
-    
-    <Border Background="{StaticResource LightThemeMainBackgroundBrush}">
+
+    <Border Background="{DynamicResource Background_Main}">
         <Grid Margin="20, 20, 20, 0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"/>
@@ -45,13 +45,13 @@
 
                     <!--Rank label-->
                     <Border
-                        Background="Black"
+                        Background="{DynamicResource Background_0}"
                         Width="auto"
                         CornerRadius="5"
                         HorizontalAlignment="Left">
 
                         <TextBlock
-                            Foreground="{StaticResource LightThemeForegroundBrush}"
+                            Foreground="{DynamicResource Text_0}"
                             Margin="10, 0">
                             
                             <Run Text="Rank #"/>
@@ -79,6 +79,7 @@
                             Text="{Binding Name}"
                             FontWeight="Bold"
                             Margin="10, 0, 0, 0"
+                            Foreground="{DynamicResource Title_Text}"
                             VerticalAlignment="Center"/>
 
                         <TextBlock
@@ -96,6 +97,7 @@
                         Grid.Row="2"
                         FontWeight="Bold"
                         FontSize="19"
+                        Foreground="{DynamicResource Title_Text}"
                         Margin="0, 5, 0, 0">
                         
                         <Run Text="$"/>
@@ -145,6 +147,7 @@
                         <TextBlock
                             Grid.Column="1"
                             FontWeight="Bold"
+                            Foreground="{DynamicResource Title_Text}"
                             HorizontalAlignment="Right">
                             
                             <Run Text="$"/>
@@ -170,6 +173,7 @@
                             Grid.Row="2"
                             Grid.Column="1"
                             FontWeight="Bold"
+                            Foreground="{DynamicResource Title_Text}"
                             HorizontalAlignment="Right">
                             
                             <Run Text="$"/>
@@ -202,6 +206,7 @@
                         <TextBlock
                             Grid.Column="1"
                             FontWeight="Bold"
+                            Foreground="{DynamicResource Title_Text}"
                             HorizontalAlignment="Right">
                             
                             <Run Text="$"/>
@@ -227,6 +232,7 @@
                             Grid.Row="2"
                             Grid.Column="1"
                             FontWeight="Bold"
+                            Foreground="{DynamicResource Title_Text}"
                             HorizontalAlignment="Right">
                             
                             <Run Text="$"/>
@@ -254,6 +260,7 @@
                 <TextBlock
                     Text="Markets"
                     FontWeight="Bold"
+                    Foreground="{DynamicResource Title_Text}"
                     FontSize="18"/>
 
                 <DataGrid 
@@ -262,7 +269,9 @@
                     CanUserAddRows="False"
                     AutoGenerateColumns="False"
                     ItemsSource="{Binding Tickers}"
-                    AlternatingRowBackground="Gainsboro">
+                    AlternatingRowBackground="{DynamicResource Alternating_Row_Background}"
+                    RowBackground="{DynamicResource Row_Background}"
+                    Foreground="{DynamicResource Title_Text}">
 
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Exchanger" Binding="{Binding MarketName}" Width="*" IsReadOnly="True"/>
@@ -282,14 +291,14 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border
-                                        Background="Black"
+                                        Background="{DynamicResource Background_0}"
                                         CornerRadius="5"
                                         Margin="2">
 
                                         <Button
                                             Content="Open"
                                             Background="Transparent"
-                                            Foreground="{StaticResource LightThemeForegroundBrush}"
+                                            Foreground="{DynamicResource Text_0}"
                                             BorderBrush="Transparent"
                                             Command="{Binding DataContext.OpenMarketCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                             CommandParameter="{Binding TradeUrl}"/>

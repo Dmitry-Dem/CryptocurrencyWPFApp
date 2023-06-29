@@ -10,8 +10,8 @@
     <Page.DataContext>
         <local:ConverterViewModel/>
     </Page.DataContext>
-    
-    <Border Background="{StaticResource LightThemeMainBackgroundBrush}">
+
+    <Border Background="{DynamicResource Background_Main}">
         <Grid Margin="20, 20, 20, 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -22,6 +22,7 @@
                 Grid.Row="0"
                 Text="Cryptocurrency Converter Calculator"
                 FontSize="20"
+                Foreground="{DynamicResource Title_Text}"
                 FontWeight="Bold"/>
 
             <Border
@@ -29,7 +30,7 @@
                 Height="150"
                 CornerRadius="15"
                 Margin="0, 20, 0, 0"
-                Background="Gainsboro">
+                Background="{DynamicResource Row_Background}">
 
                 <Grid
                     Margin="40, 20">
@@ -50,6 +51,7 @@
                         Grid.Row="0"
                         Grid.Column="0"
                         Text="Enter Amount"
+                        Foreground="{DynamicResource Title_Text}"
                         VerticalAlignment="Center"/>
 
                     <TextBox
@@ -61,6 +63,7 @@
                     <TextBlock
                         Grid.Row="2"
                         Grid.Column="0"
+                        Foreground="{DynamicResource Title_Text}"
                         Grid.ColumnSpan="2"
                         Text="{Binding ConvertedAmountLabel}"
                         FontWeight="Bold"/>
@@ -68,6 +71,7 @@
                     <!--Column 1-->
                     <TextBlock
                         Grid.Row="0"
+                        Foreground="{DynamicResource Title_Text}"
                         Grid.Column="1"
                         Text="Select Coin"
                         VerticalAlignment="Center"/>
@@ -101,6 +105,7 @@
                         Grid.Column="3"
                         Text="Select Currency"
                         VerticalAlignment="Center"
+                        Foreground="{DynamicResource Title_Text}"
                         Margin="10, 0, 0, 0"/>
 
                     <ComboBox 

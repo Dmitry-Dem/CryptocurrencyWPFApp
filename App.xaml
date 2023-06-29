@@ -9,16 +9,13 @@
                 <ResourceDictionary>
                     <local:Bootstrapper x:Key="Bootstrapper" />
                 </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
 
-            <SolidColorBrush x:Key="LightThemeForegroundBrush" Color="#DDE6ED"/>
-            <SolidColorBrush x:Key="LightThemeMainBackgroundBrush" Color="#F9F7F7"/>
-            <SolidColorBrush x:Key="LightThemeBackgroundBrush" Color="#27374D"/>
-            <SolidColorBrush x:Key="LightThemeFocusBackgroundBrush" Color="#112D4E"/>
+                <ResourceDictionary Source="Resources/Themes/LightTheme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
 
             <Style x:Key="CustomButtonStyle" TargetType="Button">
                 <Setter Property="Background" Value="Transparent"></Setter>
-                <Setter Property="Foreground" Value="{StaticResource LightThemeForegroundBrush}"></Setter>
+                <Setter Property="Foreground" Value="{DynamicResource Text_0}"></Setter>
 
                 <Setter Property="Template">
                     <Setter.Value>
@@ -32,14 +29,14 @@
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{StaticResource LightThemeFocusBackgroundBrush}" />
+                        <Setter Property="Background" Value="{DynamicResource Background_1}" />
                     </Trigger>
                 </Style.Triggers>
             </Style>
 
             <Style x:Key="CustomToggleButtonStyle" TargetType="ToggleButton">
                 <Setter Property="Background" Value="Transparent"></Setter>
-                <Setter Property="Foreground" Value="{StaticResource LightThemeForegroundBrush}"></Setter>
+                <Setter Property="Foreground" Value="{DynamicResource Text_0}"></Setter>
 
                 <Setter Property="Template">
                     <Setter.Value>
@@ -53,7 +50,7 @@
 
                 <Style.Triggers>
                     <Trigger Property="IsMouseOver" Value="True">
-                        <Setter Property="Background" Value="{StaticResource LightThemeFocusBackgroundBrush}" />
+                        <Setter Property="Background" Value="{DynamicResource Background_1}" />
                     </Trigger>
                 </Style.Triggers>
             </Style>
@@ -88,7 +85,7 @@
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
                                 </Trigger>
-                                
+
                                 <Trigger Property="IsKeyboardFocused" Value="True">
                                     <Setter Property="BorderBrush" Value="#d9d9d9" TargetName="border"/>
                                 </Trigger>
@@ -97,7 +94,32 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-        </ResourceDictionary>
 
+            <Style TargetType="DataGridColumnHeader">
+                <Setter Property="Background" Value="{DynamicResource Background_Main}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Title_Text}"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            </Style>
+
+            <Style TargetType="DataGrid">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="HeadersVisibility" Value="Column"/>
+            </Style>
+
+            <Style TargetType="DataGridCell">
+                <Setter Property="BorderThickness" Value="0, 0, 1, 1"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+            </Style>
+
+            <Style TargetType="DataGridRow">
+                <Setter Property="BorderThickness" Value="0, 1, 0, 0"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+            </Style>
+            
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
