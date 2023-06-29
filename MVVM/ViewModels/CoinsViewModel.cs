@@ -33,7 +33,7 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 		}
 		public CoinsViewModel()
         {
-			Currencies = new BindableCollection<Currency>(_APIImitation.GetAllCurrenciesAsync());
+			Currencies = new BindableCollection<Currency>(_APIImitation.GetTopNCurrenciesAsync<Currency>(250, 1));
 
 			openCurrencyDetailsPageByIdCommand = new RelayCommand<string>(OpenCurrencyDetailsPageById);
 		}

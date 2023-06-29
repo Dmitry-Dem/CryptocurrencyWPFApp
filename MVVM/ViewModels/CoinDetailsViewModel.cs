@@ -47,7 +47,7 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
         {
 			string id = (string)Application.Current.Properties["CoinDetailsId"];
 
-			_currency = _APIImitation.GetCurrencyDetailsById(id);
+			_currency = _APIImitation.GetCurrencyDetailsById(id, "usd");
 
 			Tickers = new BindableCollection<Ticker>(_APIImitation.GetTickersByCurrencieId("bitcoin"));
 

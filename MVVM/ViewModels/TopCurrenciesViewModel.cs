@@ -28,7 +28,7 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 		}
 		public TopCurrenciesViewModel()
         {
-			TopCurrencies = new BindableCollection<TopCurrency>(aPIImitation.GetTopNCurrenciesAsync(100));
+			TopCurrencies = new BindableCollection<TopCurrency>(aPIImitation.GetTopNCurrenciesAsync<TopCurrency>(100, 1));
 
 			openCurrencyDetailsPageByIdCommand = new RelayCommand<string>(OpenCurrencyDetailsPageById);
 		}
