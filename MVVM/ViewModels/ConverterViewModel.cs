@@ -16,7 +16,7 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 
 		private decimal _amount = 1;
 
-		private string searchCharacter;
+		private string _searchCharacter;
 		private string _convertedAmountLabel;
 		private string _sourceCurrency;
 		private string _targetCurrency;
@@ -37,10 +37,10 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 		}
 		public string SearchCharacter
 		{
-			get { return searchCharacter; }
+			get { return _searchCharacter; }
 			set
 			{
-				searchCharacter = value; 
+				_searchCharacter = value; 
 				NotifyOfPropertyChange(() => SearchCharacter);
 				ApplySearchFilter();
 			}

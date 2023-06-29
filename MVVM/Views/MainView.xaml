@@ -3,10 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CryptocurrencyWPFApp.MVVM.Views"
+        xmlns:local="clr-namespace:CryptocurrencyWPFApp.MVVM.ViewModels"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Width="1080" Height="720">
 
+    <Window.Resources>
+        <sys:Boolean x:Key="TrueValue">True</sys:Boolean>
+        <sys:Boolean x:Key="FalseValue">False</sys:Boolean>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </Window.Resources>
+
+    <Window.DataContext>
+        <local:MainViewModel/>
+    </Window.DataContext>
+    
     <Border
         CornerRadius="25" 
         Background="{StaticResource LightThemeMainBackgroundBrush}">
@@ -20,14 +31,14 @@
             <!--Navigation menu-->
             <Border 
                 Grid.Row="0" 
-                CornerRadius="25, 25, 0, 0" 
+                CornerRadius="0" 
                 Background="{StaticResource LightThemeBackgroundBrush}" Grid.ColumnSpan="2">
 
                 <Grid
                     Margin="20, 0, 0, 0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width=".7*"/>
-                        <ColumnDefinition Width=".3*"/>
+                        <ColumnDefinition Width=".6*"/>
+                        <ColumnDefinition Width=".4*"/>
                     </Grid.ColumnDefinitions>
 
                     <!--Navigation Buttons-->
@@ -121,17 +132,58 @@
                             Margin="0, 0, 10, 0"
                             Height="60">
 
-                            <TextBox 
-                                x:Name="myTextBox" 
-                                Text="Enter text here..."
+                            <!--<Grid.InputBindings>
+                                <KeyBinding Key="Enter" Command="{Binding SearchCurrencyDetailsPageCommand}" CommandParameter="{Binding SelectedCurrency}"/>
+                            </Grid.InputBindings>-->
+
+                            <ComboBox
+                                x:Name="textBox"
+                                IsEditable="True"
+                                StaysOpenOnEdit="True"
+                                Text="{Binding SelectedCurrency}" 
+                                ItemsSource="{Binding Currencies}"
+                                SelectedItem="{Binding SelectedCurrency}"
                                 Foreground="Gray"
-                                Style="{StaticResource textboxSearch}"/>
+                                FontSize="16"
+                                Margin="10, 10, 0, 10"
+                                Padding="35, 10, 0, 10">
+
+                                <ComboBox.InputBindings>
+                                    <KeyBinding Key="Enter" Command="{Binding SearchCurrencyDetailsPageCommand}" CommandParameter="{Binding SelectedCurrency}"/>
+                                </ComboBox.InputBindings>
+                                
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            
+                                            <Image Grid.Column="0" Width="20" Source="{Binding Image}"/>
+                                            <TextBlock Grid.Column="1" Text="{Binding Symbol}" HorizontalAlignment="Center"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
+
+                            <Border Background="Transparent" IsHitTestVisible="False">
+                                <TextBlock
+                                    Text="Search Currency here..."
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    Foreground="Gray"
+                                    Margin="50, 0, 0, 0"
+                                    FontSize="15"
+                                    Visibility="{Binding ElementName=textBox, Path=Text.IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}, ConverterParameter={StaticResource TrueValue}}"
+                                    Panel.ZIndex="1"/>
+                            </Border>
 
                             <Image 
                                 Width="20" 
                                 Source="\Resources\Images\search_icon.png"
-                                HorizontalAlignment="Right"
-                                Margin="0, 0, 5, 0"/>
+                                HorizontalAlignment="Left"
+                                Margin="20, 0, 0, 0"/>
                         </Grid>
                     </Grid>
                 </Grid>

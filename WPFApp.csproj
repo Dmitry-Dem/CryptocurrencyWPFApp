@@ -178,5 +178,6 @@
   <ItemGroup>
     <Resource Include="Resources\Images\exchange_icon.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
