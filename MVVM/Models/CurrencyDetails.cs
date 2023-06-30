@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CryptocurrencyWPFApp.MVVM.Models
 {
-	public class CurrencyDetails : TopCurrency
+	public class CurrencyDetails : Currency
 	{
 		[JsonProperty("fully_diluted_valuation")]
 		public decimal FullyDilutedValuation { get; set; }
@@ -17,5 +17,9 @@ namespace CryptocurrencyWPFApp.MVVM.Models
 
 		[JsonProperty("market_cap")]
 		public decimal MarketCap { get; set; }
+		[JsonProperty("total_volume")]
+		public decimal TotalVolume { get; set; }
+		[JsonProperty("total_supply")]
+		public decimal TotalSupply { get; set; }
 	}
 }

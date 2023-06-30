@@ -12,7 +12,7 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 {
 	public class ConverterViewModel : Screen
 	{
-		private CoinGeckoAPIImitation _APIImitation = new CoinGeckoAPIImitation();
+		private CoinGeckoAPI _coinGeckoAPI = new CoinGeckoAPI();
 
 		private decimal _amount = 1;
 
@@ -24,7 +24,6 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 		private ObservableCollection<string> _supportedCurrencies;
 		private ObservableCollection<Currency> _filteredCurrencies;
 		private ObservableCollection<Currency> _currencies;
-
 		public decimal Amount
 		{
 			get { return _amount; }
@@ -98,15 +97,18 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 				ApplySearchFilter();
 			}
 		}
-		public ConverterViewModel()
+        public ConverterViewModel()
         {
 			LoadData();
-        }
-		private void LoadData()
+		}
+		private async void LoadData()
 		{
-			Currencies = new ObservableCollection<Currency>(_APIImitation.GetTopNCurrenciesAsync<Currency>(250, 1));
+			Currencies = new ObservableCollection<Currency>(await _coinGeckoAPI.GetTopNCurrenciesAsync(250, 1));
 
-			SupportedCurrencies = new ObservableCollection<string>(_APIImitation.GetSupportedCurrencies());
+			SupportedCurrencies = new ObservableCollection<string>(await _coinGeckoAPI.GetSupportedCurrenciesAsync());
+
+			NotifyOfPropertyChange(() => Currencies);
+			NotifyOfPropertyChange(() => SupportedCurrencies);
 
 			FilteredCurrencies = Currencies;
 		}
@@ -121,13 +123,13 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 				FilteredCurrencies = new ObservableCollection<Currency>(Currencies.Where(c => c.Symbol.StartsWith(SearchCharacter)));
 			}
 		}
-		private void UpdateConvertedAmount()
+		private async void UpdateConvertedAmount()
 		{
 			if (!string.IsNullOrEmpty(SourceCurrency) && !string.IsNullOrEmpty(TargetCurrency))
 			{
 				try
 				{
-					decimal currencyPrice = _APIImitation.GetCurrencyPriceById(SourceCurrency, TargetCurrency);
+					decimal currencyPrice = await _coinGeckoAPI.GetCurrencyPriceByIdAsync(SourceCurrency, TargetCurrency);
 
 					decimal totalAmount = Amount * currencyPrice;
 

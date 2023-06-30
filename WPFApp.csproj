@@ -88,14 +88,13 @@
     </ApplicationDefinition>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="MVVM\Models\APIs\CoinGeckoAPIImitation.cs" />
+    <Compile Include="MVVM\Models\APIs\APIResponceImitation.cs" />
     <Compile Include="MVVM\Models\APIs\CoinGeckoAPI.cs" />
     <Compile Include="MVVM\Models\CoinPriceChartData.cs" />
     <Compile Include="MVVM\Models\Currency.cs" />
     <Compile Include="MVVM\Models\CurrencyDetails.cs" />
     <Compile Include="MVVM\Models\Services\CurrencyService.cs" />
     <Compile Include="MVVM\Models\Interfaces\ICurrencyService.cs" />
-    <Compile Include="MVVM\Models\TopCurrency.cs" />
     <Compile Include="MVVM\ViewModels\CoinDetailsViewModel.cs" />
     <Compile Include="MVVM\ViewModels\CoinsViewModel.cs" />
     <Compile Include="MVVM\ViewModels\ConverterViewModel.cs" />
@@ -184,6 +183,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\TestData\allCur.json" />
+    <None Include="Resources\TestData\curDit.json" />
+    <None Include="Resources\TestData\curHist.json" />
+    <None Include="Resources\TestData\tickers.json" />
+    <None Include="Resources\TestData\supCur.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

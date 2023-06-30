@@ -21,7 +21,7 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 {
 	public class MainViewModel : Screen
 	{
-		private CoinGeckoAPIImitation _APIImitation = new CoinGeckoAPIImitation();
+		private CoinGeckoAPI _coinGeckoAPI = new CoinGeckoAPI();
 
 		private string _searchBox;
 		private string _searchCharacter;
@@ -149,20 +149,20 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 			ChangeThemeCommand = new RelayCommand(ChangeTheme);
 			SearchCurrencyDetailsPageCommand = new RelayCommand<Currency>(SearchCurrencyDetailsPageAndOpenIfExist);
 		}
-		private void LoadData()
-		{
-			Currencies = new ObservableCollection<Currency>(_APIImitation.GetTopNCurrenciesAsync<Currency>(250, 1));
-
-			FilteredCurrencies = Currencies;
-
-			Languages = AppLocalization.GetSupportedLanguages();
-			SelectedLanguage = Languages[0];
-		}
 		private void ChangeTheme()
 		{
 			AppTheme.SwitchThemeBetweenLightAndDark();
 
 			ChangeThemeImage();
+		}
+		private async void LoadData()
+		{
+			Currencies = new ObservableCollection<Currency>(await _coinGeckoAPI.GetTopNCurrenciesAsync(250, 1));
+
+			FilteredCurrencies = Currencies;
+
+			Languages = AppLocalization.GetSupportedLanguages();
+			SelectedLanguage = Languages[0];
 		}
 		private void ChangeThemeImage()
 		{
@@ -216,7 +216,7 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 		{
 			return $"\\MVVM\\Views\\{pageName}View.xaml";
 		}
-		private void SearchCurrencyDetailsPageAndOpenIfExist(Currency currency)
+		private async void SearchCurrencyDetailsPageAndOpenIfExist(Currency currency)
 		{
 			if (currency != null)
 			{
@@ -224,9 +224,11 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 
 				if (frame != null)
 				{
-					Application.Current.Properties["CoinDetailsId"] = currency.Id;
+					var chartData = await _coinGeckoAPI.GetCurrencyHistorycalMarketDataAsync(currency.Id, "5");
 
-					frame.Navigate(new CoinDetailsView());
+					var coinDetails = await _coinGeckoAPI.GetCurrencyDetailsByIdAsync(currency.Id, "usd");
+
+					frame.Navigate(new CoinDetailsView() { DataContext = new CoinDetailsViewModel(coinDetails, chartData) });
 
 					SelectedCurrency = null;
 				}

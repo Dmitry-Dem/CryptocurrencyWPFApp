@@ -18,7 +18,7 @@
         <Grid Margin="20, 20, 20, 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="600"/>
             </Grid.RowDefinitions>
             <!--List Title-->
 
@@ -33,50 +33,50 @@
                 Margin="0, 0, 0, 20"/>
 
             <!--List: Top Currencies-->
-            <DataGrid 
-                Grid.Row="1" 
-                ItemsSource="{Binding TopCurrencies}"
-                AlternatingRowBackground="{DynamicResource Alternating_Row_Background}"
-                RowBackground="{DynamicResource Row_Background}"
-                Foreground="{DynamicResource Title_Text}"
-                CanUserAddRows="False"
-                AutoGenerateColumns="False">
+            <ScrollViewer Grid.Row="1">
+                <DataGrid 
+                    ItemsSource="{Binding TopCurrencies}"
+                    AlternatingRowBackground="{DynamicResource Alternating_Row_Background}"
+                    RowBackground="{DynamicResource Row_Background}"
+                    Foreground="{DynamicResource Title_Text}"
+                    CanUserAddRows="False"
+                    AutoGenerateColumns="False"
+                    VirtualizingPanel.IsVirtualizing="True">
 
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Rank}" Binding="{Binding Path=Rank}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Name}" Binding="{Binding Path=Name}" Width="*" IsReadOnly="True"/>
-                    <DataGridTemplateColumn Header="Image" Width="50">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Image Width="30" Source="{Binding Path=Image}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Symbol}" Binding="{Binding Path=Symbol}" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Price}" Binding="{Binding Path=Price}" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_TotalVolume}" Binding="{Binding Path=TotalVolume}" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_TotalSupply}" Binding="{Binding Path=TotalSupply}" Width="*" IsReadOnly="True"/>
-                    <DataGridTemplateColumn Header="{x:Static rc:Resources.DataGrid_Col_Details}" Width="70">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Border
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Rank}" Binding="{Binding Path=Rank}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Name}" Binding="{Binding Path=Name}" Width="*" IsReadOnly="True"/>
+                        <DataGridTemplateColumn Header="Image" Width="50">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Width="30" Source="{Binding Path=Image}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Symbol}" Binding="{Binding Path=Symbol}" Width="*" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Price}" Binding="{Binding Path=Price}" Width="*" IsReadOnly="True"/>
+                        <DataGridTemplateColumn Header="{x:Static rc:Resources.DataGrid_Col_Details}" Width="70">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border
                                     Background="{DynamicResource Background_0}"
                                     CornerRadius="5"
                                     Margin="2">
-                                    
-                                    <Button
+
+                                        <Button
                                         Content="{x:Static rc:Resources.DataGrid_Row_OpenBtn}"
                                         Background="Transparent"
                                         Foreground="{DynamicResource Text_0}"
                                         BorderBrush="Transparent"
                                         Command="{Binding DataContext.OpenCurrencyDetailsPageByIdCommand, RelativeSource={RelativeSource AncestorType=DataGrid}}"
                                         CommandParameter="{Binding Id}"/>
-                                </Border>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
         </Grid>
     </Border>
 </Page>

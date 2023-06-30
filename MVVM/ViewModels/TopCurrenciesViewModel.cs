@@ -13,12 +13,13 @@ using CryptocurrencyWPFApp.Commands;
 using System.Windows.Controls;
 using System.Windows;
 using CryptocurrencyWPFApp.MVVM.Views;
+using System.Windows.Markup;
 
 namespace CryptocurrencyWPFApp.MVVM.ViewModels
 {
 	public class TopCurrenciesViewModel : Screen
 	{
-		private CoinGeckoAPIImitation aPIImitation = new CoinGeckoAPIImitation();
+		private CoinGeckoAPI _coinGeckoAPI = new CoinGeckoAPI();
 
 		private ICommand openCurrencyDetailsPageByIdCommand;
 		public ICommand OpenCurrencyDetailsPageByIdCommand
@@ -27,27 +28,33 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 			set { openCurrencyDetailsPageByIdCommand = value; }
 		}
 
-		private BindableCollection<TopCurrency> topCurrencies;
-		public BindableCollection<TopCurrency> TopCurrencies
+		private BindableCollection<Currency> topCurrencies;
+		public BindableCollection<Currency> TopCurrencies
 		{
 			get { return topCurrencies; }
 			set { topCurrencies = value; NotifyOfPropertyChange(() => TopCurrencies); }
 		}
 		public TopCurrenciesViewModel()
         {
-			TopCurrencies = new BindableCollection<TopCurrency>(aPIImitation.GetTopNCurrenciesAsync<TopCurrency>(100, 1));
-
 			openCurrencyDetailsPageByIdCommand = new RelayCommand<string>(OpenCurrencyDetailsPageById);
+
+			LoadData();
 		}
-		public void OpenCurrencyDetailsPageById(string Id)
+		private async void LoadData()
+		{
+			TopCurrencies = new BindableCollection<Currency>(await _coinGeckoAPI.GetTopNCurrenciesAsync(100, 1));
+		}
+		public async void OpenCurrencyDetailsPageById(string Id)
 		{
 			Frame frame = (Frame)Application.Current.MainWindow.FindName("mainFrame");
 
 			if (frame != null)
 			{
-				Application.Current.Properties["CoinDetailsId"] = Id;
+				var chartData = await _coinGeckoAPI.GetCurrencyHistorycalMarketDataAsync(Id, "5");
 
-				frame.Navigate(new CoinDetailsView());
+				var coinDetails = await _coinGeckoAPI.GetCurrencyDetailsByIdAsync(Id, "usd");
+
+				frame.Navigate(new CoinDetailsView() { DataContext = new CoinDetailsViewModel(coinDetails, chartData) });
 			}
 		}
 	}

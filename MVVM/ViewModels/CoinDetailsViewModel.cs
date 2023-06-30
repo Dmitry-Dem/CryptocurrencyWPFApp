@@ -19,7 +19,7 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 {
 	public class CoinDetailsViewModel : Screen
 	{
-		private CoinGeckoAPIImitation _APIImitation = new CoinGeckoAPIImitation();
+		private CoinGeckoAPI _coinGeckoAPI = new CoinGeckoAPI();
 
 		private CurrencyDetails _currency;
 		public CurrencyDetails Currency
@@ -43,33 +43,32 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 		}
 		public ChartValues<decimal> PriceData { get; set; } = new ChartValues<decimal>();
 		public ChartValues<string> DateTimeData { get; set; } = new ChartValues<string>();
-		public CoinDetailsViewModel()
+        public CoinDetailsViewModel(CurrencyDetails currencyDetails, CoinPriceChartData coinPriceChartData)
         {
-			string id = (string)Application.Current.Properties["CoinDetailsId"];
-
-			_currency = _APIImitation.GetCurrencyDetailsById(id, "usd");
-
-			Tickers = new BindableCollection<Ticker>(_APIImitation.GetTickersByCurrencieId("bitcoin"));
-
 			openMarketCommand = new RelayCommand<string>(OpenExchanger);
 
-			LoadChartData();
+			Currency = currencyDetails;
+
+			LoadTickersData();
+			LoadChartData(coinPriceChartData);
 		}
-		private void LoadChartData()
+		private async void LoadTickersData()
 		{
-			PriceData = new ChartValues<decimal>();
-
-			var chartData = _APIImitation.GetCurrencyHistorycalMarketData("bitcoin", "30");
-
-			foreach (var dataPoint in chartData.Prices)
-			{
-				DateTimeData.Add(DateTimeOffset.FromUnixTimeMilliseconds(dataPoint[0]).DateTime.ToString());
-				PriceData.Add(dataPoint[1]);
-			}
+			Tickers = new BindableCollection<Ticker>(await _coinGeckoAPI.GetTickersByCurrencieIdAsync(Currency.Id));
 		}
 		private void OpenExchanger(string link)
 		{
 			System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(link));
+		}
+		private void LoadChartData(CoinPriceChartData coinPriceChartData)
+		{
+			PriceData = new ChartValues<decimal>();
+
+			foreach (var dataPoint in coinPriceChartData.Prices)
+			{
+				DateTimeData.Add(DateTimeOffset.FromUnixTimeMilliseconds(dataPoint[0]).DateTime.ToString());
+				PriceData.Add(dataPoint[1]);
+			}
 		}
 	}
 	

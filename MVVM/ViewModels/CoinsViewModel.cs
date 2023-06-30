@@ -16,7 +16,7 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 {
 	public class CoinsViewModel : Screen
 	{
-		private CoinGeckoAPIImitation _APIImitation = new CoinGeckoAPIImitation();
+		private CoinGeckoAPI _coinGeckoAPI = new CoinGeckoAPI();
 
 		private BindableCollection<Currency> _currencies;
 		public BindableCollection<Currency> Currencies
@@ -33,19 +33,25 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 		}
 		public CoinsViewModel()
         {
-			Currencies = new BindableCollection<Currency>(_APIImitation.GetTopNCurrenciesAsync<Currency>(250, 1));
-
 			openCurrencyDetailsPageByIdCommand = new RelayCommand<string>(OpenCurrencyDetailsPageById);
+
+			LoadData();
 		}
-		public void OpenCurrencyDetailsPageById(string Id)
+		private async void LoadData()
+		{
+			Currencies = new BindableCollection<Currency>(await _coinGeckoAPI.GetTopNCurrenciesAsync(250, 1));
+		}
+		public async void OpenCurrencyDetailsPageById(string Id)
 		{
 			Frame frame = (Frame)Application.Current.MainWindow.FindName("mainFrame");
 
 			if (frame != null)
 			{
-				Application.Current.Properties["CoinDetailsId"] = Id;
+				var chartData = await _coinGeckoAPI.GetCurrencyHistorycalMarketDataAsync(Id, "5");
 
-				frame.Navigate(new CoinDetailsView());
+				var coinDetails = await _coinGeckoAPI.GetCurrencyDetailsByIdAsync(Id, "usd");
+
+				frame.Navigate(new CoinDetailsView() { DataContext = new CoinDetailsViewModel(coinDetails, chartData) });
 			}
 		}
 	}
