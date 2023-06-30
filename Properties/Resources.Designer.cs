@@ -22,7 +22,7 @@ namespace CryptocurrencyWPFApp.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace CryptocurrencyWPFApp.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CryptocurrencyWPFApp.Properties.Resources", typeof(Resources).Assembly);
@@ -51,12 +51,273 @@ namespace CryptocurrencyWPFApp.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string CoinDetailsPage_Chart_Date {
+            get {
+                return ResourceManager.GetString("CoinDetailsPage_Chart_Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price.
+        /// </summary>
+        public static string CoinDetailsPage_Chart_Price {
+            get {
+                return ResourceManager.GetString("CoinDetailsPage_Chart_Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price Change.
+        /// </summary>
+        public static string CoinDetailsPage_Chart_PriceChange {
+            get {
+                return ResourceManager.GetString("CoinDetailsPage_Chart_PriceChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Circulating Supply.
+        /// </summary>
+        public static string CoinDetailsPage_CirculatingSupply {
+            get {
+                return ResourceManager.GetString("CoinDetailsPage_CirculatingSupply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fully Diluted Valuation.
+        /// </summary>
+        public static string CoinDetailsPage_FullyDilutedValuation {
+            get {
+                return ResourceManager.GetString("CoinDetailsPage_FullyDilutedValuation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Market Cap.
+        /// </summary>
+        public static string CoinDetailsPage_MarketCap {
+            get {
+                return ResourceManager.GetString("CoinDetailsPage_MarketCap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Markets.
+        /// </summary>
+        public static string CoinDetailsPage_MarketsTitle {
+            get {
+                return ResourceManager.GetString("CoinDetailsPage_MarketsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Supply.
+        /// </summary>
+        public static string CoinDetailsPage_TotalSupply {
+            get {
+                return ResourceManager.GetString("CoinDetailsPage_TotalSupply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coins.
+        /// </summary>
+        public static string CoinsPage_Title {
+            get {
+                return ResourceManager.GetString("CoinsPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter Amount.
+        /// </summary>
+        public static string ConverterPage_EnterAmount {
+            get {
+                return ResourceManager.GetString("ConverterPage_EnterAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Coin.
+        /// </summary>
+        public static string ConverterPage_SelectCoin {
+            get {
+                return ResourceManager.GetString("ConverterPage_SelectCoin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select Currency.
+        /// </summary>
+        public static string ConverterPage_SelectCurrency {
+            get {
+                return ResourceManager.GetString("ConverterPage_SelectCurrency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cryptocurrency Converter Calculator.
+        /// </summary>
+        public static string ConverterPage_Title {
+            get {
+                return ResourceManager.GetString("ConverterPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Base / Target.
+        /// </summary>
+        public static string DataGrid_Col_BaseTraget {
+            get {
+                return ResourceManager.GetString("DataGrid_Col_BaseTraget", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string DataGrid_Col_Details {
+            get {
+                return ResourceManager.GetString("DataGrid_Col_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exchanger.
+        /// </summary>
+        public static string DataGrid_Col_Exchanger {
+            get {
+                return ResourceManager.GetString("DataGrid_Col_Exchanger", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image.
+        /// </summary>
+        public static string DataGrid_Col_Image {
+            get {
+                return ResourceManager.GetString("DataGrid_Col_Image", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string DataGrid_Col_Name {
+            get {
+                return ResourceManager.GetString("DataGrid_Col_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price ($).
+        /// </summary>
+        public static string DataGrid_Col_Price {
+            get {
+                return ResourceManager.GetString("DataGrid_Col_Price", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rank.
+        /// </summary>
+        public static string DataGrid_Col_Rank {
+            get {
+                return ResourceManager.GetString("DataGrid_Col_Rank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Symbol.
+        /// </summary>
+        public static string DataGrid_Col_Symbol {
+            get {
+                return ResourceManager.GetString("DataGrid_Col_Symbol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Supply ($).
+        /// </summary>
+        public static string DataGrid_Col_TotalSupply {
+            get {
+                return ResourceManager.GetString("DataGrid_Col_TotalSupply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Volume ($).
+        /// </summary>
+        public static string DataGrid_Col_TotalVolume {
+            get {
+                return ResourceManager.GetString("DataGrid_Col_TotalVolume", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open.
+        /// </summary>
+        public static string DataGrid_Row_OpenBtn {
+            get {
+                return ResourceManager.GetString("DataGrid_Row_OpenBtn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coins.
+        /// </summary>
+        public static string Navigation_CoinsPage {
+            get {
+                return ResourceManager.GetString("Navigation_CoinsPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Converter.
+        /// </summary>
+        public static string Navigation_ConverterPage {
+            get {
+                return ResourceManager.GetString("Navigation_ConverterPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top Currencies.
+        /// </summary>
+        public static string Navigation_MainPage {
+            get {
+                return ResourceManager.GetString("Navigation_MainPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search Currency here....
+        /// </summary>
+        public static string Navigation_SearchPlaceHolder {
+            get {
+                return ResourceManager.GetString("Navigation_SearchPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top 100 Currencies.
+        /// </summary>
+        public static string TopCurrencyPage_Title {
+            get {
+                return ResourceManager.GetString("TopCurrencyPage_Title", resourceCulture);
             }
         }
     }

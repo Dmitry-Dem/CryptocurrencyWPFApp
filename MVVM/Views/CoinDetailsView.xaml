@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+      xmlns:rc="clr-namespace:CryptocurrencyWPFApp.Properties"
       xmlns:local="clr-namespace:CryptocurrencyWPFApp.MVVM.ViewModels"
       mc:Ignorable="d" 
       Width="1080" Height="720">
@@ -120,7 +121,7 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
@@ -140,7 +141,7 @@
 
                         <TextBlock
                             Grid.Column="0"
-                            Text="Market Cap"
+                            Text="{x:Static rc:Resources.CoinDetailsPage_MarketCap}"
                             Foreground="Gray"
                             HorizontalAlignment="Left"/>
 
@@ -165,9 +166,10 @@
                         <TextBlock
                             Grid.Row="2"
                             Grid.Column="0"
-                            Text="Fully Diluted Valuation"
+                            Text="{x:Static rc:Resources.CoinDetailsPage_FullyDilutedValuation}"
                             Foreground="Gray"
-                            HorizontalAlignment="Left"/>
+                            HorizontalAlignment="Left"
+                            Margin="0, 0, 10, 0"/>
 
                         <TextBlock
                             Grid.Row="2"
@@ -199,7 +201,7 @@
 
                         <TextBlock
                             Grid.Column="0"
-                            Text="Circulating Supply"
+                            Text="{x:Static rc:Resources.CoinDetailsPage_CirculatingSupply}"
                             Foreground="Gray"
                             HorizontalAlignment="Left"/>
 
@@ -224,7 +226,7 @@
                         <TextBlock
                             Grid.Row="2"
                             Grid.Column="0"
-                            Text="Total Supply"
+                            Text="{x:Static rc:Resources.CoinDetailsPage_TotalSupply}"
                             Foreground="Gray"
                             HorizontalAlignment="Left"/>
 
@@ -258,7 +260,7 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock
-                    Text="Markets"
+                    Text="{x:Static rc:Resources.CoinDetailsPage_MarketsTitle}"
                     FontWeight="Bold"
                     Foreground="{DynamicResource Title_Text}"
                     FontSize="18"/>
@@ -274,8 +276,8 @@
                     Foreground="{DynamicResource Title_Text}">
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Exchanger" Binding="{Binding MarketName}" Width="*" IsReadOnly="True"/>
-                        <DataGridTemplateColumn Header="Base/Target" Width="*" IsReadOnly="True">
+                        <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Exchanger}" Binding="{Binding MarketName}" Width="*" IsReadOnly="True"/>
+                        <DataGridTemplateColumn Header="{x:Static rc:Resources.DataGrid_Col_BaseTraget}" Width="*" IsReadOnly="True">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock>
@@ -286,8 +288,8 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="Price ($)" Binding="{Binding PriceInUSD}" Width="*" IsReadOnly="True"/>
-                        <DataGridTemplateColumn Header="Open" Width="50">
+                        <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Price}" Binding="{Binding PriceInUSD}" Width="*" IsReadOnly="True"/>
+                        <DataGridTemplateColumn Header="{x:Static rc:Resources.DataGrid_Row_OpenBtn}" Width="70">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Border
@@ -296,7 +298,7 @@
                                         Margin="2">
 
                                         <Button
-                                            Content="Open"
+                                            Content="{x:Static rc:Resources.DataGrid_Row_OpenBtn}"
                                             Background="Transparent"
                                             Foreground="{DynamicResource Text_0}"
                                             BorderBrush="Transparent"
@@ -324,15 +326,15 @@
 
                     <lvc:CartesianChart>
                         <lvc:CartesianChart.Series>
-                            <lvc:LineSeries Title="Price Changed" Values="{Binding PriceData}"/>
+                            <lvc:LineSeries Title="{x:Static rc:Resources.CoinDetailsPage_Chart_PriceChange}" Values="{Binding PriceData}"/>
                         </lvc:CartesianChart.Series>
                         
                         <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Title="Date" Labels="{Binding DateTimeData}"/>
+                            <lvc:Axis Title="{x:Static rc:Resources.CoinDetailsPage_Chart_Date}" Labels="{Binding DateTimeData}"/>
                         </lvc:CartesianChart.AxisX>
                         
                         <lvc:CartesianChart.AxisY>
-                            <lvc:Axis Title="Price" />
+                            <lvc:Axis Title="{x:Static rc:Resources.CoinDetailsPage_Chart_Price}" />
                         </lvc:CartesianChart.AxisY>
                     </lvc:CartesianChart>
                     

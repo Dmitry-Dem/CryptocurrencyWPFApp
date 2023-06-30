@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:CryptocurrencyWPFApp.MVVM.ViewModels"
+      xmlns:rc="clr-namespace:CryptocurrencyWPFApp.Properties"
       mc:Ignorable="d" 
       Width="1080" Height="720">
 
@@ -23,7 +24,7 @@
 
             <TextBlock
                 Grid.Row="0"
-                Text="Top 100 Currencies"
+                Text="{x:Static rc:Resources.TopCurrencyPage_Title}"
                 FontSize="20"
                 FontWeight="Bold"
                 Foreground="{DynamicResource Title_Text}"
@@ -42,8 +43,8 @@
                 AutoGenerateColumns="False">
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Rank" Binding="{Binding Path=Rank}" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Rank}" Binding="{Binding Path=Rank}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Name}" Binding="{Binding Path=Name}" Width="*" IsReadOnly="True"/>
                     <DataGridTemplateColumn Header="Image" Width="50">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -51,11 +52,11 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Symbol" Binding="{Binding Path=Symbol}" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Price ($)" Binding="{Binding Path=Price}" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Total Volume ($)" Binding="{Binding Path=TotalVolume}" Width="*" IsReadOnly="True"/>
-                    <DataGridTextColumn Header="Total Supply ($)" Binding="{Binding Path=TotalSupply}" Width="*" IsReadOnly="True"/>
-                    <DataGridTemplateColumn Header="Details" Width="50">
+                    <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Symbol}" Binding="{Binding Path=Symbol}" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_Price}" Binding="{Binding Path=Price}" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_TotalVolume}" Binding="{Binding Path=TotalVolume}" Width="*" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="{x:Static rc:Resources.DataGrid_Col_TotalSupply}" Binding="{Binding Path=TotalSupply}" Width="*" IsReadOnly="True"/>
+                    <DataGridTemplateColumn Header="{x:Static rc:Resources.DataGrid_Col_Details}" Width="70">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Border
@@ -64,7 +65,7 @@
                                     Margin="2">
                                     
                                     <Button
-                                        Content="Open"
+                                        Content="{x:Static rc:Resources.DataGrid_Row_OpenBtn}"
                                         Background="Transparent"
                                         Foreground="{DynamicResource Text_0}"
                                         BorderBrush="Transparent"

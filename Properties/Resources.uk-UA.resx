@@ -118,90 +118,90 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CoinDetailsPage_Chart_Date" xml:space="preserve">
-    <value>Date</value>
+    <value>Дата</value>
   </data>
   <data name="CoinDetailsPage_Chart_Price" xml:space="preserve">
-    <value>Price</value>
+    <value>Ціна</value>
   </data>
   <data name="CoinDetailsPage_Chart_PriceChange" xml:space="preserve">
-    <value>Price Change</value>
+    <value>Зміна ціни</value>
   </data>
   <data name="CoinDetailsPage_CirculatingSupply" xml:space="preserve">
-    <value>Circulating Supply</value>
+    <value>Циркуляційне постачання</value>
   </data>
   <data name="CoinDetailsPage_FullyDilutedValuation" xml:space="preserve">
-    <value>Fully Diluted Valuation</value>
+    <value>Повністю розведена оцінка</value>
   </data>
   <data name="CoinDetailsPage_MarketCap" xml:space="preserve">
-    <value>Market Cap</value>
+    <value>Ринкова капіталізація</value>
   </data>
   <data name="CoinDetailsPage_MarketsTitle" xml:space="preserve">
-    <value>Markets</value>
+    <value>Ринки</value>
   </data>
   <data name="CoinDetailsPage_TotalSupply" xml:space="preserve">
-    <value>Total Supply</value>
+    <value>Загальна пропозиція</value>
   </data>
   <data name="CoinsPage_Title" xml:space="preserve">
-    <value>Coins</value>
+    <value>Монети</value>
   </data>
   <data name="ConverterPage_EnterAmount" xml:space="preserve">
-    <value>Enter Amount</value>
+    <value>Введіть Суму</value>
   </data>
   <data name="ConverterPage_SelectCoin" xml:space="preserve">
-    <value>Select Coin</value>
+    <value>Виберіть Монету</value>
   </data>
   <data name="ConverterPage_SelectCurrency" xml:space="preserve">
-    <value>Select Currency</value>
+    <value>Виберіть Валюту</value>
   </data>
   <data name="ConverterPage_Title" xml:space="preserve">
-    <value>Cryptocurrency Converter Calculator</value>
+    <value>Калькулятор конвертера криптовалют</value>
   </data>
   <data name="DataGrid_Col_BaseTraget" xml:space="preserve">
-    <value>Base / Target</value>
+    <value>Основа / Ціль</value>
   </data>
   <data name="DataGrid_Col_Details" xml:space="preserve">
-    <value>Details</value>
+    <value>Подробиці</value>
   </data>
   <data name="DataGrid_Col_Exchanger" xml:space="preserve">
-    <value>Exchanger</value>
+    <value>Обмінник</value>
   </data>
   <data name="DataGrid_Col_Image" xml:space="preserve">
-    <value>Image</value>
+    <value>Картинка</value>
   </data>
   <data name="DataGrid_Col_Name" xml:space="preserve">
-    <value>Name</value>
+    <value>Назва</value>
   </data>
   <data name="DataGrid_Col_Price" xml:space="preserve">
-    <value>Price ($)</value>
+    <value>Ціна ($)</value>
   </data>
   <data name="DataGrid_Col_Rank" xml:space="preserve">
-    <value>Rank</value>
+    <value>Ранг</value>
   </data>
   <data name="DataGrid_Col_Symbol" xml:space="preserve">
-    <value>Symbol</value>
+    <value>Символ</value>
   </data>
   <data name="DataGrid_Col_TotalSupply" xml:space="preserve">
-    <value>Total Supply ($)</value>
+    <value>Загальна пропозиція ($)</value>
   </data>
   <data name="DataGrid_Col_TotalVolume" xml:space="preserve">
-    <value>Total Volume ($)</value>
+    <value>Загальний обсяг ($)</value>
   </data>
   <data name="DataGrid_Row_OpenBtn" xml:space="preserve">
-    <value>Open</value>
+    <value>Відкрити</value>
   </data>
   <data name="Navigation_CoinsPage" xml:space="preserve">
-    <value>Coins</value>
+    <value>Монети</value>
   </data>
   <data name="Navigation_ConverterPage" xml:space="preserve">
-    <value>Converter</value>
+    <value>Конвертер</value>
   </data>
   <data name="Navigation_MainPage" xml:space="preserve">
-    <value>Top Currencies</value>
+    <value>Найпопулярніші валюти</value>
   </data>
   <data name="Navigation_SearchPlaceHolder" xml:space="preserve">
-    <value>Search Currency here...</value>
+    <value>Пошук валюти тут...</value>
   </data>
   <data name="TopCurrencyPage_Title" xml:space="preserve">
-    <value>Top 100 Currencies</value>
+    <value>Топ 100 валют</value>
   </data>
 </root>

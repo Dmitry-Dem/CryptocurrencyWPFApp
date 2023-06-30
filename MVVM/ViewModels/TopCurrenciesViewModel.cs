@@ -20,6 +20,13 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 	{
 		private CoinGeckoAPIImitation aPIImitation = new CoinGeckoAPIImitation();
 
+		private ICommand openCurrencyDetailsPageByIdCommand;
+		public ICommand OpenCurrencyDetailsPageByIdCommand
+		{
+			get { return openCurrencyDetailsPageByIdCommand; }
+			set { openCurrencyDetailsPageByIdCommand = value; }
+		}
+
 		private BindableCollection<TopCurrency> topCurrencies;
 		public BindableCollection<TopCurrency> TopCurrencies
 		{
@@ -31,13 +38,6 @@ namespace CryptocurrencyWPFApp.MVVM.ViewModels
 			TopCurrencies = new BindableCollection<TopCurrency>(aPIImitation.GetTopNCurrenciesAsync<TopCurrency>(100, 1));
 
 			openCurrencyDetailsPageByIdCommand = new RelayCommand<string>(OpenCurrencyDetailsPageById);
-		}
-
-		private ICommand openCurrencyDetailsPageByIdCommand;
-		public ICommand OpenCurrencyDetailsPageByIdCommand
-		{
-			get { return openCurrencyDetailsPageByIdCommand; }
-			set { openCurrencyDetailsPageByIdCommand = value; }
 		}
 		public void OpenCurrencyDetailsPageById(string Id)
 		{

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CryptocurrencyWPFApp.MVVM.ViewModels"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:rc="clr-namespace:CryptocurrencyWPFApp.Properties"
         mc:Ignorable="d"
         Width="1080" Height="720"
         Title="Cryptocurrency App">
@@ -45,20 +46,23 @@
                     <!--Navigation Buttons-->
                     <DockPanel LastChildFill="False">
                         <Button
-                            Content="Top Currencies"
+                            x:Name="NavigationMainPageButton"
+                            Content="{x:Static rc:Resources.Navigation_MainPage}"
                             Height="60"
                             FontSize="25"
                             Style="{DynamicResource CustomButtonStyle}"
                             Command="{Binding OpenPageCommand}" CommandParameter="TopCurrencies"/>
 
                         <Button
-                            Content="Coins"
+                            x:Name="NavigationCoinsPageButton"
+                            Content="{x:Static rc:Resources.Navigation_CoinsPage}"
                             FontSize="20"
                             Style="{StaticResource CustomButtonStyle}"
                             Command="{Binding OpenPageCommand}" CommandParameter="Coins"/>
 
                         <Button
-                            Content="Converter"
+                            x:Name="NavigationConverterPageButton"
+                            Content="{x:Static rc:Resources.Navigation_ConverterPage}"
                             FontSize="20"
                             Style="{StaticResource CustomButtonStyle}"
                             Command="{Binding OpenPageCommand}" CommandParameter="Converter">
@@ -73,7 +77,7 @@
                         </Grid.ColumnDefinitions>
 
                         <!--Select language button-->
-                        <ToggleButton 
+                        <!--<ToggleButton 
                             x:Name="toggleButton" 
                             Content="en"
                             FontSize="20"
@@ -109,7 +113,12 @@
 
                                 </StackPanel>
                             </Border>
-                        </Popup>
+                        </Popup>-->
+                        <ComboBox 
+                            ItemsSource="{Binding Languages}" 
+                            SelectedItem="{Binding SelectedLanguage}"
+                            VerticalAlignment="Center"
+                            FontSize="15"/>
 
                         <!--Change Light/Darck Theme-->
                         <Button
@@ -167,7 +176,8 @@
 
                             <Border Background="Transparent" IsHitTestVisible="False">
                                 <TextBlock
-                                    Text="Search Currency here..."
+                                    x:Name="NavigationSearchPlaceHolderText"
+                                    Text="{x:Static rc:Resources.Navigation_SearchPlaceHolder}"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Left"
                                     Foreground="Gray"

@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:rc="clr-namespace:CryptocurrencyWPFApp.Properties"
       xmlns:local="clr-namespace:CryptocurrencyWPFApp.MVVM.ViewModels"
       mc:Ignorable="d" 
       Width="1080" Height="720">
@@ -20,7 +21,7 @@
 
             <TextBlock
                 Grid.Row="0"
-                Text="Cryptocurrency Converter Calculator"
+                Text="{x:Static rc:Resources.ConverterPage_Title}"
                 FontSize="20"
                 Foreground="{DynamicResource Title_Text}"
                 FontWeight="Bold"/>
@@ -50,7 +51,7 @@
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="0"
-                        Text="Enter Amount"
+                        Text="{x:Static rc:Resources.ConverterPage_EnterAmount}"
                         Foreground="{DynamicResource Title_Text}"
                         VerticalAlignment="Center"/>
 
@@ -73,7 +74,7 @@
                         Grid.Row="0"
                         Foreground="{DynamicResource Title_Text}"
                         Grid.Column="1"
-                        Text="Select Coin"
+                        Text="{x:Static rc:Resources.ConverterPage_SelectCoin}"
                         VerticalAlignment="Center"/>
 
                     <ComboBox 
@@ -103,7 +104,7 @@
                     <TextBlock
                         Grid.Row="0"
                         Grid.Column="3"
-                        Text="Select Currency"
+                        Text="{x:Static rc:Resources.ConverterPage_SelectCurrency}"
                         VerticalAlignment="Center"
                         Foreground="{DynamicResource Title_Text}"
                         Margin="10, 0, 0, 0"/>
